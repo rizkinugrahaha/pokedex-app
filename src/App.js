@@ -1,25 +1,43 @@
-import logo from './logo.svg';
 import { useEffect, useState } from 'react';
 import './App.css';
-import axios from 'axios';
+import { splitURL } from './utils/func';
+import API from './services/api';
 
 function App() {
+  const [offset, setOffset] = useState(900);
+  const [pokemonList, setPokemonList] = useState();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      API.get(`/pokemon?limit=20&offset=${offset}`)
+        .then((res) => {
+          let pokemon = res.data.results.map((item, i) => ({
+            name: item.name,
+            url: item.url,
+            image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${splitURL(item.url)[6]}.png`
+          }))
+          setPokemonList(pokemon);
+        })
+        .catch((error) => {
+          console.log(error);
+        })
+    }
+
+    fetchData();
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {
+        pokemonList && pokemonList.map((item, i) => {
+          return (
+            <li key={i}>
+              {item.name}
+              <img src={item.image}></img>
+            </li>
+          )
+        })
+      }
     </div>
   );
 }
