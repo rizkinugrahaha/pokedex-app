@@ -1,0 +1,14 @@
+.pokemon {
+  &__pagination-container {
+    margin: 1rem 0;
+  }
+
+  &__pagination--btn {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    outline: none;
+    cursor: pointer;
+    margin-right: 0.5rem;
+  }
+}

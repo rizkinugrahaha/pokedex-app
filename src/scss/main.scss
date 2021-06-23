@@ -1,9 +1,12 @@
 @import './base/variables';
 @import './base/reset';
 @import './base/typography';
+@import './base/utilities';
 
 @import './components/cards';
 @import './components/header';
-@import './components//loader';
+@import './components/loader';
+@import './components/pagination';
+@import './components//footer';
 
 @import './layout/container';

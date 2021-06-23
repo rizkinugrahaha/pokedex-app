@@ -1,4 +1,3 @@
-import React from 'react';
 import gif from '../assets/images/pikachu-run.gif';
 
 export default function Loading() {

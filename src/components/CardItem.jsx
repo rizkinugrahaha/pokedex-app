@@ -1,4 +1,3 @@
-import React from 'react';
 import { splitURL } from '../utils/func';
 
 export default function CardItem({ data }) {
@@ -8,7 +7,7 @@ export default function CardItem({ data }) {
 
   return (
     <div className="pokemon__card">
-      <img className="pokemon__card--img" src={data.imageSprite} onError={addFallbackImg}></img>
+      <img className="pokemon__card--img" src={data.imageSprite} onError={addFallbackImg} alt=""></img>
       <p className="pokemon__card--name">{data.name}</p>
     </div>
   )

@@ -9,20 +9,18 @@
   flex-wrap: wrap;
 
   &>.column {
-    flex: 0 0 47%;
-    max-width: 47%;
-
-    &:not(:last-child) {
-      margin-right: 1rem;
-    }
+    flex: 0 0 50%;
+    max-width: 50%;
 
     @media (min-width: 767px) {
-      flex: 0 0 30%;
-      max-width: 30%;
-
-      &:not(:last-child) {
-        margin-right: 20px;
-      }
+      flex: 0 0 33.33333%;
+      max-width: 33.33333%;
     }
   }
+}
+
+.pokemon__main-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
