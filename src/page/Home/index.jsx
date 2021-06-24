@@ -8,6 +8,7 @@ import CardItem from '../../components/CardItem';
 import Pagination from '../../components/Pagination';
 import Loading from '../../components/Loading';
 import SearchBar from '../../components/SearchBar';
+import NoResult from '../../assets/images/pikachu-cry.png';
 
 const Home = () => {
   const [loading, setLoading] = useState(true);
@@ -17,6 +18,7 @@ const Home = () => {
   const [nextUrl, setNextUrl] = useState(null);
   const [sumPokemon, setSumPokemon] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
+  const [searchResult, setSearchResult] = useState();
 
   useEffect(() => {
     let cancel;
@@ -46,12 +48,22 @@ const Home = () => {
 
   useEffect(() => {
     if (!_.isEmpty(searchQuery)) {
+      setLoading(true);
       API.get(`/pokemon/${searchQuery}`)
         .then((res) => {
           console.log(res.data);
+          let result = {
+            name: _.get(res.data, 'name', 'No Data'),
+            imageSprite: _.get(res.data, 'sprites.front_default', 'No Image'),
+            imageArtwork: _.get(res.data, 'sprites.other.official-artwork.front_default', 'No Image'),
+          }
+          setSearchResult(result);
+          setLoading(false);
         })
         .catch((error) => {
           console.log('error =>', error);
+          setSearchResult('');
+          setLoading(false);
         })
     }
   }, [searchQuery])
@@ -69,12 +81,12 @@ const Home = () => {
       <h1>Pokemon Catalogue App</h1>
       {sumPokemon && <p>There are currently {sumPokemon} pokemon listed here, feel free to browse through the list to see the available pokemon data.</p>}
       <SearchBar
-        onChange={_.debounce((e) => setSearchQuery(e.target.value), 1000)}
+        onChange={_.debounce((e) => setSearchQuery((e.target.value).toLowerCase()), 1000)}
       />
-      <Pagination
+      {!searchQuery && <Pagination
         goToPrevPage={previousUrl ? goToPrev : null}
         goToNextPage={nextUrl ? goToNext : null}
-      />
+      />}
       {
         loading && <Loading />
       }
@@ -84,17 +96,41 @@ const Home = () => {
             return (
               <div className="column-list" key={i}>
                 <Link className="pokemon__card--link" to={`/detail/${item.name}`}>
-                  <CardItem data={item} />
+                  <CardItem
+                    type="all"
+                    data={item}
+                  />
                 </Link>
               </div>
             )
           })
         }
       </div>}
-      <Pagination
+      {
+        (!loading && searchQuery) &&
+        <div className="row">
+          {searchResult && <div className="column-list">
+            <Link className="pokemon__card--link" to={`/detail/${searchResult?.name}`}>
+              <CardItem
+                type="search"
+                data={searchResult}
+              />
+            </Link>
+          </div>
+          }
+          {
+            !searchResult &&
+            <div className="pokemon__search-error-container">
+              <img style={{ marginBottom: '0.75rem' }} src={NoResult} width={150}></img>
+              <pre>No results found</pre>
+            </div>
+          }
+        </div>
+      }
+      {!searchQuery && <Pagination
         goToPrevPage={previousUrl ? goToPrev : null}
         goToNextPage={nextUrl ? goToNext : null}
-      />
+      />}
     </div>
   );
 }

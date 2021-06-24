@@ -40,8 +40,21 @@
   }
 }
 
-.pokemon__main-layout {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+.pokemon {
+
+  &__main-layout {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  &__search-error-container {
+    flex: 0 0 100%;
+    max-width: 100%;
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
 }
