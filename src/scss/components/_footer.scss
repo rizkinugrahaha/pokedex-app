@@ -1,0 +1,11 @@
+.pokemon {
+  &__footer {
+    display: flex;
+    align-items: center;
+    margin-top: auto;
+    background-color: $boston-red;
+    color: white;
+    justify-content: center;
+    height: 55px;
+  }
+}

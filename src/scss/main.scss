@@ -1,0 +1,16 @@
+@import './base/variables';
+@import './base/reset';
+@import './base/typography';
+@import './base/utilities';
+
+@import './components/cards';
+@import './components/detail';
+@import './components/header';
+@import './components/input';
+@import './components/loader';
+@import './components/pagination';
+@import './components/footer';
+@import './components/table';
+@import './components/type';
+
+@import './layout/container';

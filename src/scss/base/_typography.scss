@@ -1,0 +1,24 @@
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+
+  @media (min-width: 768px) {
+    margin-bottom: 1rem;
+  }
+}
+
+h1 {
+  font-size: 1.5rem;
+
+  @media (min-width: 768px) {
+    font-size: 1.85rem;
+  }
+}
+
+p {
+  line-height: 1.35;
+}

@@ -1,0 +1,16 @@
+.pokemon {
+  &__search-container {
+    margin: 0.75rem 0;
+  }
+
+  &__search-input {
+    padding: 0.75rem;
+    width: 100%;
+    border-radius: 10px;
+    border: 2px solid rgba($color: $cerulean-blue, $alpha: 0.85);
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
