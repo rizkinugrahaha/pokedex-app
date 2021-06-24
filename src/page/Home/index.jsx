@@ -121,7 +121,7 @@ const Home = () => {
           {
             !searchResult &&
             <div className="pokemon__search-error-container">
-              <img style={{ marginBottom: '0.75rem' }} src={NoResult} width={150}></img>
+              <img alt="" style={{ marginBottom: '0.75rem' }} src={NoResult} width={150}></img>
               <pre>No results found</pre>
             </div>
           }
