@@ -1,3 +1,10 @@
+.column-pos {
+  position: relative;
+  width: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
 .container {
   margin: 0 auto;
   max-width: 1200px;
@@ -7,14 +14,28 @@
 .row {
   display: flex;
   flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
 
-  &>.column {
+  &>.column-list {
     flex: 0 0 50%;
     max-width: 50%;
+    @extend .column-pos;
 
     @media (min-width: 767px) {
       flex: 0 0 33.33333%;
       max-width: 33.33333%;
+    }
+  }
+
+  &>.column-full {
+    flex: 0 0 100%;
+    max-width: 100%;
+    @extend .column-pos;
+
+    @media (min-width: 768px) {
+      flex: 0 0 50%;
+      max-width: 50%;
     }
   }
 }

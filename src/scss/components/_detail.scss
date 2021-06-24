@@ -1,0 +1,21 @@
+.pokemon {
+  &__detail--img-container {
+    display: flex;
+    justify-content: center;
+    border: 3px solid rgba($cerulean-blue, 0.85);
+    border-radius: 12px;
+    margin-bottom: 0.75rem;
+  }
+
+  &__detail--img {
+    max-width: 100%;
+    height: auto;
+    width: 220px;
+  }
+
+  &__detail--img-sm {
+    max-width: 100%;
+    height: auto;
+    width: 80px;
+  }
+}

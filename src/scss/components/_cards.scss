@@ -9,7 +9,6 @@
     padding: 0.5rem 1rem;
     margin-bottom: 0.875rem;
     min-height: 170px;
-    margin-right: 1rem;
 
     &--img {
       max-width: 100%;
@@ -21,6 +20,15 @@
     &--name {
       font-size: 1rem;
       text-transform: capitalize;
+
+      @media (min-width: 768px) {
+        font-size: 1.15rem;
+      }
+    }
+
+    &--link {
+      text-decoration: none;
+      color: $cerulean-blue;
     }
   }
 }

@@ -1,0 +1,32 @@
+.table__wrapper {
+  border: 3px solid rgba($color: $cerulean-blue, $alpha: 0.85);
+  overflow: auto;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  border-style: hidden;
+  width: 100%;
+}
+
+th,
+td {
+  border: 3px solid rgba($color: $cerulean-blue, $alpha: 0.85);
+  border-collapse: separate;
+  width: 100%;
+  padding: 0.75rem;
+  text-align: center;
+}
+
+tr.stat-column>th,
+tr.stat-column>td {
+  font-size: 12px;
+  width: 20%;
+
+  @media (min-width: 768px) {
+    font-size: 16px;
+  }
+}
